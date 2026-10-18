@@ -3,6 +3,7 @@ import Header from './components/Header';
 import UniverSheet from './components/UniverSheet';
 import UniverDoc from './components/UniverDoc';
 import HelpModal from './components/HelpModal';
+import AICopilot from './components/AICopilot';
 
 import {
   CONSTRUCTION_COST_TEMPLATE,
@@ -16,6 +17,10 @@ export default function App() {
   const [selectedTemplateKey, setSelectedTemplateKey] = useState('cost');
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // AI Copilot state (open by default)
+  const [isCopilotOpen, setIsCopilotOpen] = useState(true);
+  const [univerAPI, setUniverAPI] = useState(null);
 
   // Determine which template data to provide to UniverSheet
   const currentSheetData =
@@ -49,24 +54,39 @@ export default function App() {
         onOpenHelp={() => setIsHelpOpen(true)}
         isFullscreen={isFullscreen}
         onToggleFullscreen={handleToggleFullscreen}
+        isCopilotOpen={isCopilotOpen}
+        onToggleCopilot={() => setIsCopilotOpen((prev) => !prev)}
       />
 
-      {/* 2. Main Univer Office Canvas Workspace */}
-      <main className="univer-main-workspace">
-        {mode === 'sheets' ? (
-          <UniverSheet
-            key={`sheet-${selectedTemplateKey}`}
-            initialData={currentSheetData}
-          />
-        ) : (
-          <UniverDoc
-            key="univer-doc-editor"
-            initialData={null}
-          />
-        )}
-      </main>
+      {/* 2. Main Body: Split between Univer Workspace and AI Copilot Sidebar */}
+      <div className="univer-body-wrapper">
+        <main className="univer-main-workspace">
+          {mode === 'sheets' ? (
+            <UniverSheet
+              key={`sheet-${selectedTemplateKey}`}
+              initialData={currentSheetData}
+              onUniverReady={(api) => setUniverAPI(api)}
+            />
+          ) : (
+            <UniverDoc
+              key="univer-doc-editor"
+              initialData={null}
+              onUniverReady={(api) => setUniverAPI(api)}
+            />
+          )}
+        </main>
 
-      {/* 3. Help & REA Guide Modal */}
+        {/* 3. AI Vibe Copilot Panel */}
+        <AICopilot
+          isOpen={isCopilotOpen}
+          onClose={() => setIsCopilotOpen(false)}
+          univerAPI={univerAPI}
+          mode={mode}
+          selectedTemplateKey={selectedTemplateKey}
+        />
+      </div>
+
+      {/* 4. Help & REA Guide Modal */}
       <HelpModal
         isOpen={isHelpOpen}
         onClose={() => setIsHelpOpen(false)}

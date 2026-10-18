@@ -9,7 +9,8 @@ import {
   Maximize2,
   Minimize2,
   Layers,
-  ChevronDown
+  ChevronDown,
+  Bot
 } from 'lucide-react';
 
 export default function Header({
@@ -19,7 +20,9 @@ export default function Header({
   onSelectTemplate,
   onOpenHelp,
   isFullscreen,
-  onToggleFullscreen
+  onToggleFullscreen,
+  isCopilotOpen,
+  onToggleCopilot
 }) {
   return (
     <header className="univer-header-bar">
@@ -78,6 +81,16 @@ export default function Header({
       </div>
 
       <div className="header-right">
+        {/* AI Copilot Toggle Button with Glow */}
+        <button
+          className={`header-tool-btn ai-copilot-btn ${isCopilotOpen ? 'active' : ''}`}
+          onClick={onToggleCopilot}
+          title="AI 바이브 코파일럿 열기/닫기"
+        >
+          <Sparkles size={16} className="copilot-btn-sparkle" />
+          <span>AI 코파일럿 (바이브 지시)</span>
+        </button>
+
         <button
           className="header-tool-btn"
           onClick={onOpenHelp}

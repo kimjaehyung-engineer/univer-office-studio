@@ -153,13 +153,302 @@
   border-color: #CBD5E1;
 }
 
-/* ================= MAIN UNIVER WORKSPACE ================= */
+/* AI Copilot Button in Header */
+.ai-copilot-btn {
+  background: linear-gradient(135deg, rgba(16, 124, 65, 0.08) 0%, rgba(37, 99, 235, 0.08) 100%);
+  border-color: rgba(16, 124, 65, 0.3);
+  color: #107C41;
+  font-weight: 700;
+}
+.ai-copilot-btn.active, .ai-copilot-btn:hover {
+  background: linear-gradient(135deg, #107C41 0%, #0D9488 100%);
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(16, 124, 65, 0.3);
+}
+.copilot-btn-sparkle {
+  color: #F59E0B;
+}
+.ai-copilot-btn.active .copilot-btn-sparkle, .ai-copilot-btn:hover .copilot-btn-sparkle {
+  color: #FFDE03;
+}
+
+/* ================= MAIN SPLIT WORKSPACE ================= */
+.univer-body-wrapper {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 52px);
+  overflow: hidden;
+  position: relative;
+}
+
 .univer-main-workspace {
   flex: 1;
-  width: 100%;
-  height: calc(100vh - 52px);
+  height: 100%;
   position: relative;
   overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+/* ================= AI COPILOT SIDEBAR ================= */
+.ai-copilot-sidebar {
+  width: 380px;
+  height: 100%;
+  background: #F8FAFC;
+  border-left: 1px solid var(--univer-border);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  z-index: 40;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.copilot-header {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--univer-border);
+}
+
+.copilot-title-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.copilot-title-box h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.1;
+}
+.copilot-status-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #107C41;
+  background: #E6F4EA;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.sparkle-badge {
+  color: #107C41;
+}
+
+.close-copilot-btn {
+  color: #94A3B8;
+  padding: 4px;
+  border-radius: 4px;
+}
+.close-copilot-btn:hover {
+  color: #0F172A;
+  background: #F1F5F9;
+}
+
+/* Quick Vibe Actions */
+.quick-vibe-actions {
+  padding: 12px 14px;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--univer-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.vibe-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.vibe-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.vibe-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #334155;
+  transition: all 0.15s;
+}
+.vibe-chip:hover {
+  background: #E6F4EA;
+  border-color: #107C41;
+  color: #107C41;
+  transform: translateY(-1px);
+}
+
+/* Copilot Messages Thread */
+.copilot-messages {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-message-row {
+  display: flex;
+  gap: 8px;
+  max-width: 92%;
+}
+.chat-message-row.user {
+  margin-left: auto;
+  flex-direction: row-reverse;
+}
+
+.avatar-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  flex-shrink: 0;
+}
+.chat-message-row.ai .avatar-icon {
+  background: #E6F4EA;
+  color: #107C41;
+}
+.chat-message-row.user .avatar-icon {
+  background: #EBF3FC;
+  color: #185ABD;
+}
+
+.message-bubble {
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  position: relative;
+}
+.chat-message-row.ai .message-bubble {
+  background: #FFFFFF;
+  border: 1px solid var(--univer-border);
+  color: #1E293B;
+  border-top-left-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+.chat-message-row.user .message-bubble {
+  background: #107C41;
+  color: #FFFFFF;
+  border-top-right-radius: 2px;
+}
+
+.message-content {
+  white-space: pre-wrap;
+}
+.message-time {
+  display: block;
+  font-size: 0.65rem;
+  margin-top: 4px;
+  opacity: 0.7;
+}
+
+/* Thinking Dots */
+.message-bubble.thinking {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #107C41;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* Input Area */
+.copilot-input-area {
+  padding: 12px;
+  background: #FFFFFF;
+  border-top: 1px solid var(--univer-border);
+}
+.input-box-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #F1F5F9;
+  border: 1px solid var(--univer-border);
+  border-radius: 8px;
+  padding: 4px 6px;
+  transition: border-color 0.15s;
+}
+.input-box-wrapper:focus-within {
+  border-color: #107C41;
+  background: #FFFFFF;
+}
+
+.copilot-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.82rem;
+  color: #1E293B;
+  padding: 6px 4px;
+}
+
+.voice-mic-btn {
+  padding: 6px;
+  border-radius: 6px;
+  color: #64748B;
+  transition: all 0.15s;
+}
+.voice-mic-btn:hover {
+  color: #0F172A;
+  background: #E2E8F0;
+}
+.voice-mic-btn.listening {
+  color: #DC2626;
+  background: #FEE2E2;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.copilot-send-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #107C41;
+  color: #FFFFFF;
+  transition: all 0.15s;
+}
+.copilot-send-btn:hover:not(:disabled) {
+  background: #0E6B38;
+}
+.copilot-send-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 
 /* ================= MODAL ================= */

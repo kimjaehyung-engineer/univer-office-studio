@@ -53,14 +53,16 @@ export default function UniverDoc({ initialData, onUniverReady }) {
     }
 
     return () => {
-      if (univerInstance) {
-        try {
-          univerInstance.dispose();
-        } catch (e) {
-          // ignore cleanup errors
+      queueMicrotask(() => {
+        if (univerInstance) {
+          try {
+            univerInstance.dispose();
+          } catch (e) {
+            // ignore cleanup errors
+          }
         }
-      }
-      container.remove();
+        container.remove();
+      });
     };
   }, [initialData]);
 

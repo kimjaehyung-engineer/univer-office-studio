@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
+
+:root {
+  --univer-bg: #FFFFFF;
+  --univer-header-bg: #F8FAFC;
+  --univer-border: #E2E8F0;
+  --univer-text: #1E293B;
+  --univer-text-muted: #64748B;
+  
+  --excel-green: #107C41;
+  --excel-green-light: #E6F4EA;
+  --word-blue: #185ABD;
+  --word-blue-light: #EBF3FC;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  background-color: var(--univer-bg);
+  color: var(--univer-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+}

@@ -263,6 +263,23 @@ export function executeVibeCommand(promptText, univerAPI) {
   }
 
   // ==========================================
+  // CASE 5.5: EXTEND COLUMNS / ROWS (열 확장 / 행 확장)
+  // ==========================================
+  if (lower.includes('열늘려') || lower.includes('열추가') || lower.includes('열확장') || lower.includes('z열') || lower.includes('열더')) {
+    try {
+      const currentCols = sheet.getColumnCount();
+      const newCols = Math.max(currentCols + 10, 30);
+      sheet.setColumnCount(newCols);
+      return {
+        success: true,
+        message: `📐 **시트 열을 총 ${newCols}개 열(A열부터 Z, AA... 이상)로 시원하게 확장했습니다!**`
+      };
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  // ==========================================
   // CASE 6: INSERT NEW ROW (행 추가 / 공종 추가)
   // ==========================================
   if (lower.includes('추가') || lower.includes('신규') || lower.includes('행삽입') || lower.includes('공종')) {

@@ -8,8 +8,8 @@ export const CONSTRUCTION_COST_TEMPLATE = {
     'sheet-01': {
       id: 'sheet-01',
       name: '공종별_견적내역',
-      rowCount: 35,
-      columnCount: 10,
+      rowCount: 100,
+      columnCount: 26,
       cellData: {
         // Title Row
         0: {
@@ -118,8 +118,8 @@ export const CONSTRUCTION_COST_TEMPLATE = {
     'sheet-02': {
       id: 'sheet-02',
       name: '단가_기준표',
-      rowCount: 20,
-      columnCount: 6,
+      rowCount: 100,
+      columnCount: 26,
       cellData: {
         0: {
           0: { v: '표준 품셈 및 일위대가 단가표', s: { bl: 1 } }
@@ -153,8 +153,8 @@ export const RISK_CHECKLIST_TEMPLATE = {
     'sheet-01': {
       id: 'sheet-01',
       name: '리스크_체크리스트',
-      rowCount: 30,
-      columnCount: 8,
+      rowCount: 100,
+      columnCount: 26,
       cellData: {
         0: {
           0: { v: '📋 소방방재 및 지하구조물 시공 리스크 종합 점검표', s: { bl: 1, fs: 14 } }
@@ -192,6 +192,21 @@ export const RISK_CHECKLIST_TEMPLATE = {
           5: { v: '배터리 전수 교체 완료' }
         }
       }
+    }
+  }
+};
+
+export const BLANK_TEMPLATE = {
+  id: 'blank-sheet',
+  name: '통합문서1.xlsx',
+  sheetOrder: ['sheet-01'],
+  sheets: {
+    'sheet-01': {
+      id: 'sheet-01',
+      name: 'Sheet1',
+      rowCount: 100,
+      columnCount: 26,
+      cellData: {}
     }
   }
 };

@@ -7,7 +7,8 @@ import AICopilot from './components/AICopilot';
 
 import {
   CONSTRUCTION_COST_TEMPLATE,
-  RISK_CHECKLIST_TEMPLATE
+  RISK_CHECKLIST_TEMPLATE,
+  BLANK_TEMPLATE
 } from './data/templates';
 
 import './App.css';
@@ -28,7 +29,7 @@ export default function App() {
       ? CONSTRUCTION_COST_TEMPLATE
       : selectedTemplateKey === 'risk'
       ? RISK_CHECKLIST_TEMPLATE
-      : null;
+      : BLANK_TEMPLATE;
 
   // Toggle Fullscreen
   const handleToggleFullscreen = () => {

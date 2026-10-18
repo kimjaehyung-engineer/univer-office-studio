@@ -291,6 +291,16 @@
   color: #107C41;
   transform: translateY(-1px);
 }
+.vibe-chip.highlight {
+  background: #E6F4EA;
+  border-color: #107C41;
+  color: #107C41;
+  font-weight: 700;
+}
+.vibe-chip.highlight:hover {
+  background: #107C41;
+  color: #FFFFFF;
+}
 
 /* Copilot Messages Thread */
 .copilot-messages {
